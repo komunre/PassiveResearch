@@ -4,8 +4,9 @@ namespace PassiveResearch
 {
     public class PassiveProgress : MapComponent
     {
-        public float PassiveResearchSpeed = 0.1f;
+        public float PassiveResearchSpeed = 0.7f;
         protected PassiveResearchWindow window = null;
+        private bool addedWindowToStack = false;
         public PassiveProgress(Map map) : base(map)
         {
         }
@@ -26,10 +27,12 @@ namespace PassiveResearch
         {
             base.MapComponentOnGUI();
 
-            if (window == null)
+            CreateWindow();
+            if (!addedWindowToStack)
             {
-                window = new PassiveResearchWindow();
                 Find.WindowStack.Add(window);
+                window.RefreshValue();
+                addedWindowToStack = true;
             }
         }
 
@@ -37,7 +40,15 @@ namespace PassiveResearch
         {
             base.ExposeData();
 
-            Scribe_Values.Look(ref PassiveResearchSpeed, "passiveResearchSpeed");
+            Scribe_Values.Look(ref PassiveResearchSpeed, "passiveResearchSpeed", 0.7f);
+        }
+
+        private void CreateWindow()
+        {
+            if (window == null)
+            {
+                window = new PassiveResearchWindow();
+            }
         }
     }
 }
