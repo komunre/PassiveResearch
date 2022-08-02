@@ -2,11 +2,13 @@
 <ModMetaData>
 	<name>Passive Research</name>
 	<author>komunre</author>
-	<url></url>
+	<url>https://informasoft.ru/</url>
 	<packageId>komunre.BetterExp.PassiveResearch</packageId>
 	<supportedVersions>
 		<li>1.3</li>
 	</supportedVersions>
 	
-	<description>Adds passive research so your colony won't stagnate</description>
+	<description>Adds passive research so your colony won't stagnate.
+	
+Research will get assigned amount of points (default 0.7) each map tick, making your research to progress without need to assign scientist. However, assigning someone to research, will speed up research, just as in normal vanilla. Count it as invisible friend who does research for you while you're busy.</description>
 </ModMetaData>
