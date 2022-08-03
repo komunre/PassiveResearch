@@ -4,11 +4,10 @@ namespace PassiveResearch
 {
     public class PassiveProgress : MapComponent
     {
-        public float PassiveResearchSpeed = 0.7f;
-        protected PassiveResearchWindow window = null;
-        private bool addedWindowToStack = false;
+        private PassiveResearchSettings settings;
         public PassiveProgress(Map map) : base(map)
         {
+            settings = LoadedModManager.GetMod<PassiveResearchMod>().GetSettings<PassiveResearchSettings>();
         }
 
         public override void MapComponentTick()
@@ -20,35 +19,7 @@ namespace PassiveResearch
             var manager = Find.ResearchManager;
             if (manager.currentProj == null) return;
 
-            manager.ResearchPerformed(PassiveResearchSpeed, null);
-        }
-
-        public override void MapComponentOnGUI()
-        {
-            base.MapComponentOnGUI();
-
-            CreateWindow();
-            if (!addedWindowToStack)
-            {
-                Find.WindowStack.Add(window);
-                window.RefreshValue();
-                addedWindowToStack = true;
-            }
-        }
-
-        public override void ExposeData()
-        {
-            base.ExposeData();
-
-            Scribe_Values.Look(ref PassiveResearchSpeed, "passiveResearchSpeed", 0.7f);
-        }
-
-        private void CreateWindow()
-        {
-            if (window == null)
-            {
-                window = new PassiveResearchWindow();
-            }
+            manager.ResearchPerformed(settings.PassiveResearchSpeed, null);
         }
     }
 }
