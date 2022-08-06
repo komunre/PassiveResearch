@@ -2,19 +2,17 @@
 
 namespace PassiveResearch
 {
-    public class PassiveProgress : MapComponent
+    public class PassiveProgress : GameComponent
     {
         private PassiveResearchSettings settings;
-        public PassiveProgress(Map map) : base(map)
+        public PassiveProgress(Game game)
         {
             settings = LoadedModManager.GetMod<PassiveResearchMod>().GetSettings<PassiveResearchSettings>();
         }
 
-        public override void MapComponentTick()
+        public override void GameComponentTick()
         {
-            base.MapComponentTick();
-
-            if (!map.IsPlayerHome) return;
+            base.GameComponentTick();
 
             var manager = Find.ResearchManager;
             if (manager.currentProj == null) return;

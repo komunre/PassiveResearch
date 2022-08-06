@@ -10,5 +10,7 @@
 	
 	<description>Adds passive research so your colony won't stagnate.
 	
-Research will get assigned amount of points (default 0.7) each map tick, making your research to progress without need to assign scientist. However, assigning someone to research, will speed up research, just as in normal vanilla. Count it as invisible friend who does research for you while you're busy.</description>
+Research will get assigned amount of points (default 0.7) each simulation tick, making your research to progress without need to assign scientist. However, assigning someone to research, will speed up research, just as in normal vanilla. Count it as invisible friend who does research for you while you're busy.
+
+To change points amount (and so research speed), open my mod in mod settings menu.</description>
 </ModMetaData>
