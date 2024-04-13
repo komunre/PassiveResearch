@@ -15,7 +15,11 @@ namespace PassiveResearch
             base.GameComponentTick();
 
             var manager = Find.ResearchManager;
+#if v1_5
+            if (manager.GetProject() == null) return;
+#else
             if (manager.currentProj == null) return;
+#endif
 
             manager.ResearchPerformed(settings.PassiveResearchSpeed, null);
         }
